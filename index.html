@@ -1,1 +1,142 @@
-ABC
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiczowata Strona Świąteczna</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #0c0f3d;
+            color: #fff;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        h1 {
+            margin: 20px;
+            color: #ff0000;
+            text-shadow: 3px 3px 0 #00ff00, 6px 6px 0 #0000ff;
+            animation: rainbow 3s infinite;
+        }
+
+        @keyframes rainbow {
+            0%, 100% { color: #ff0000; }
+            25% { color: #00ff00; }
+            50% { color: #0000ff; }
+            75% { color: #ffff00; }
+        }
+
+        .voucher {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #333;
+            border: 2px dashed #fff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #photo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            border: 5px solid red;
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            user-select: none;
+            animation: snow 10s linear infinite;
+        }
+
+        @keyframes snow {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .bomb {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://via.placeholder.com/50x50'); /* Placeholder bomb graphic */
+            background-size: cover;
+            animation: fly 8s infinite;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(200px, 100px);
+            }
+            100% {
+                transform: translate(-100px, 200px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Wesołych Świąt!</h1>
+
+    <div class="voucher">Voucher 1: <span id="voucher1">XXXX-XXXX-XXXX-XXXX</span></div>
+    <div class="voucher">Voucher 2: <span id="voucher2">YYYY-YYYY-YYYY-YYYY</span></div>
+
+    <img id="photo" src="photo_of_brother.jpg" alt="Obraz Twojego Brata">
+
+    <!-- Bombs -->
+    <div class="bomb" style="left: 10%; top: 20%;"></div>
+    <div class="bomb" style="left: 70%; top: 40%;"></div>
+    <div class="bomb" style="left: 40%; top: 80%;"></div>
+
+    <!-- Snowflakes -->
+    <div class="snowflake" style="left: 20%; font-size: 24px;">❄</div>
+    <div class="snowflake" style="left: 50%; font-size: 20px;">❄</div>
+    <div class="snowflake" style="left: 80%; font-size: 30px;">❄</div>
+
+    <audio autoplay loop>
+        <source src="https://www.example.com/christmas-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Generate more snowflakes dynamically
+        setInterval(() => {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.fontSize = Math.random() * 30 + 10 + 'px';
+            snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.body.appendChild(snowflake);
+
+            // Remove snowflake after it leaves the screen
+            setTimeout(() => snowflake.remove(), 10000);
+        }, 300);
+    </script>
+</body>
+</html>
